@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Join Planto.green, a Kriyaetive Verse Private Limited project, to sponsor trees and build sustainable eco-parks in India.">
+    <meta property="og:title" content="Planto.green | Plant a Tree, Grow a Greener India">
+    <meta property="og:description"
+        content="Sponsor trees with Planto.green to build sustainable eco-parks and communities.">
+    <meta property="og:image" content="BannerTeaser.png">
+    <title>Planto.green | Plant a Tree, Grow a Greener India</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Urbanist:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            margin: 0;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        .fade-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-toggle {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .lang-content {
+            display: inline;
+            color: #1F2937;
+        }
+
+        .lang-content.hidden {
+            display: none;
+        }
+
+        .btn-primary {
+            background-color: #FFCA28;
+            color: #1F2937;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #FFB300;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link {
+            color: #1F2937;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2E7D32;
+        }
+
+        .nav-link.disabled {
+            color: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        .text-primary {
+            color: #2E7D32;
+        }
+
+        .text-secondary {
+            color: #FF8A65;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            z-index: 20;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 48px;
+        }
+
+        .hero-section {
+            position: relative;
+            /* background: linear-gradient(145deg, #fef1cb, #e6d9a2); */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 6rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image-section {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-image-section img {
+            max-width: 1200px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-section img:hover {
+            transform: scale(1.02);
+        }
+
+        .section-divider {
+            border-top: 1px solid #e0e0e0;
+            margin: 3rem 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #2E7D32;
+            width: 0%;
+            animation: progressAnimation 2s ease-in-out forwards;
+        }
+
+        @keyframes progressAnimation {
+            to {
+                width: 5%;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #1F2937;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        #nav-menu {
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            #nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.9);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            #nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.5rem 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="PlantoLogo.png" alt="Planto.green Logo" class="h-12">
+        <div class="flex items-center space-x-4">
+            <div class="hamburger md:hidden" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="nav-menu" class="flex items-center space-x-6 md:flex md:space-x-4">
+                <a href="/" class="nav-link text-base font-semibold" aria-label="Home Page">Home</a>
+                <a href="/whitepaper" class="nav-link text-base font-semibold disabled"
+                    aria-label="Whitepaper (Coming Soon)">Whitepaper</a>
+                <a href="/about" class="nav-link text-base font-semibold" aria-label="About Planto.green">About</a>
+                <a href="/contact" class="nav-link text-base font-semibold" aria-label="Contact Us">Contact</a>
+            </div>
+            <button id="lang-toggle" class="px-6 py-3 btn-primary rounded-full language-toggle text-base font-semibold">
+                தமிழ்
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content max-w-6xl mx-auto px-4 text-center">
+            <img src="PlantoLogo.png" alt="Planto.green Logo" class="h-16 mx-auto mb-6 fade-in">
+            <h1 class="text-5xl md:text-6xl font-bold fade-in text-primary">
+                <span class="lang-content lang-en">Plant a Tree, Grow a Greener India</span>
+                <span class="lang-content lang-ta hidden">மரம் நடு, பசுமையை வளர்க்கு</span>
+            </h1>
+            <p class="mt-4 text-xl max-w-2xl mx-auto fade-in fade-in-delay-1">
+                <span class="lang-content lang-en">Sponsor a tree with Planto.green to build sustainable eco-parks and
+                    communities.</span>
+                <span class="lang-content lang-ta hidden">Planto.green-ல் மரம் ஸ்பான்சர் செய்து, நிலையான சுற்றுச்சூழல்
+                    பூங்காக்களையும் சமூகங்களையும் உருவாக்கவும்.</span>
+            </p>
+            <a href="#interest"
+                class="mt-6 inline-block px-8 py-4 btn-primary rounded-full transition-colors fade-in fade-in-delay-2 text-lg font-semibold">
+                <span class="lang-content lang-en">Join the Movement</span>
+                <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-16 space-y-16">
+        <!-- Progress Bar -->
+        <section class="py-6 text-center">
+            <p class="text-xl font-semibold text-primary">
+                <span class="lang-content lang-en">Starting at 0%, let’s reach 10,000 trees together!</span>
+                <span class="lang-content lang-ta hidden">0% இல் தொடங்கி, ஒன்றாக 10,000 மரங்களை அடையுங்கள்!</span>
+            </p>
+            <div class="progress-bar mt-2">
+                <div class="progress"></div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="TreeGrowthTeaser.png" alt="Tree Planting Process Illustration"
+                        class="w-full rounded-lg hover-scale">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-semibold text-primary mb-4">
+                        <span class="lang-content lang-en">How It Works</span>
+                        <span class="lang-content lang-ta hidden">எவ்வாறு செயல்படுகிறது</span>
+                    </h2>
+                    <ul class="list-disc pl-6 text-gray-700 text-lg mb-6">
+                        <li><span class="lang-content lang-en">Pick a Tree: Choose Neem, Mango, or more.</span><span
+                                class="lang-content lang-ta hidden">மரத்தைத் தேர்ந்தெடுக்கவும்: வேம்பு, மாம்பழம் அல்லது
+                                மேலும்.</span></li>
+                        <li><span class="lang-content lang-en">We Plant & Update: We handle everything.</span><span
+                                class="lang-content lang-ta hidden">நாங்கள் நடவு & புதுப்பிக்கிறோம்: நாங்கள் அனைத்தையும்
+                                கவனிக்கிறோம்.</span></li>
+                        <li><span class="lang-content lang-en">Enjoy Benefits: Fruits or donated yields.</span><span
+                                class="lang-content lang-ta hidden">பயன்களை அனுபவிக்கவும்: பழங்கள் அல்லது நன்கொடை
+                                விளைச்சல்.</span></li>
+                    </ul>
+                    <a href="#interest"
+                        class="inline-block px-6 py-3 btn-primary rounded-full transition-colors hover-scale text-base font-semibold">
+                        <span class="lang-content lang-en">Join the Movement</span>
+                        <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Sponsorship Options Section -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl font-semibold text-primary mb-6 text-center">
+                    <span class="lang-content lang-en">Make Your Impact</span>
+                    <span class="lang-content lang-ta hidden">உங்கள் தாக்கத்தை உருவாக்கவும்</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-gray-50 rounded-lg shadow hover-scale">
+                        <p class="font-semibold text-xl"><i class="fas fa-seedling mr-2 text-primary"></i><span
+                                class="lang-content lang-en">Basic (₹299)</span><span
+                                class="lang-content lang-ta hidden">அடிப்படை (₹299)</span></p>
+                        <p class="text-gray-700 text-base"><span class="lang-content lang-en">Start Small: Neem or Ficus
+                                with a certificate.</span><span class="lang-content lang-ta hidden">சிறியதாக
+                                தொடங்குங்கள்: வேம்பு அல்லது ஆலமரம் மற்றும் சான்றிதழ்.</span></p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg shadow hover-scale">
+                        <p class="font-semibold text-xl"><i class="fas fa-apple-alt mr-2 text-primary"></i><span
+                                class="lang-content lang-en">Harvest (₹599)</span><span
+                                class="lang-content lang-ta hidden">அறுவடை (₹599)</span></p>
+                        <p class="text-gray-700 text-base"><span class="lang-content lang-en">Grow More: Guava or Lemon,
+                                fruits in 2–3 years.</span><span class="lang-content lang-ta hidden">மேலும் வளருங்கள்:
+                                கொய்யா அல்லது எலுமிச்சை, 2-3 ஆண்டுகளில் பழங்கள்.</span></p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg shadow hover-scale">
+                        <p class="font-semibold text-xl"><i class="fas fa-trophy mr-2 text-primary"></i><span
+                                class="lang-content lang-en">Premium (₹999)</span><span
+                                class="lang-content lang-ta hidden">பிரீமியம் (₹999)</span></p>
+                        <p class="text-gray-700 text-base"><span class="lang-content lang-en">Go Big: Mango or Coconut,
+                                credits or NFT.</span><span class="lang-content lang-ta hidden">பெரியதாக செல்லுங்கள்:
+                                மாம்பழம் அல்லது தேங்காய், கிரெடிட்கள் அல்லது NFT.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Eco-Park Vision Section -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="EcoParkOverviewTeaser.png" alt="Eco-Park Concept Illustration"
+                        class="w-full rounded-lg hover-scale">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-semibold text-primary mb-4">
+                        <span class="lang-content lang-en">Eco-Parks for a Sustainable Future</span>
+                        <span class="lang-content lang-ta hidden">நிலையான எதிர்காலத்திற்கு சுற்றுச்சூழல்
+                            பூங்காக்கள்</span>
+                    </h2>
+                    <ul class="list-disc pl-6 text-gray-700 text-lg mb-6">
+                        <li><span class="lang-content lang-en">Solar-Powered: Green hubs for sustainability.</span><span
+                                class="lang-content lang-ta hidden">சூரிய ஆற்றல்: நிலைத்தன்மைக்கு பசுமை மையங்கள்.</span>
+                        </li>
+                        <li><span class="lang-content lang-en">Tree & Farm Centers: Boost local ecosystems.</span><span
+                                class="lang-content lang-ta hidden">மரம் & விவசாய மையங்கள்: உள்ளூர் சுற்றுச்சூழலை
+                                மேம்படுத்துதல்.</span></li>
+                        <li><span class="lang-content lang-en">Startup Spaces: Affordable green ventures.</span><span
+                                class="lang-content lang-ta hidden">ஸ்டார்ட்அப் இடங்கள்: மலிவு பசுமை முயற்சிகள்.</span>
+                        </li>
+                    </ul>
+                    <a href="#interest"
+                        class="inline-block px-6 py-3 btn-primary rounded-full transition-colors hover-scale text-base font-semibold">
+                        <span class="lang-content lang-en">Join the Movement</span>
+                        <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Government Collaboration Vision Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="GovtEcoParkTeaser.png" alt="Government Partnership Vision Illustration"
+                        class="w-full rounded-lg hover-scale">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-semibold text-primary mb-4">
+                        <span class="lang-content lang-en">Partnering for a Greener India</span>
+                        <span class="lang-content lang-ta hidden">பசுமையான இந்தியாவுக்கு ஒத்துழைப்பு</span>
+                    </h2>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span class="lang-content lang-en">We’re laying the groundwork to collaborate with government
+                            initiatives, turning unused lands into eco-parks that uplift communities.</span>
+                        <span class="lang-content lang-ta hidden">வெற்று நிலங்களை சமூகங்களை மேம்படுத்தும் சுற்றுச்சூழல்
+                            பூங்காக்களாக மாற்ற, அரசாங்க முயற்சிகளுடன் ஒத்துழைக்க அடித்தளம் அமைக்கிறோம்.</span>
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 text-lg mb-6">
+                        <li><span class="lang-content lang-en"><i class="fas fa-handshake mr-2 text-primary"></i>Tree
+                                Planting: Explore programs like MGNREGA.</span><span
+                                class="lang-content lang-ta hidden"><i
+                                    class="fas fa-handshake mr-2 text-primary"></i>மரம் நடுதல்: MGNREGA போன்ற திட்டங்களை
+                                ஆராய்தல்.</span></li>
+                        <li><span class="lang-content lang-en"><i class="fas fa-landmark mr-2 text-primary"></i>Land
+                                Use: Build sustainable parks.</span><span class="lang-content lang-ta hidden"><i
+                                    class="fas fa-landmark mr-2 text-primary"></i>நிலப் பயன்பாடு: நிலையான பூங்காக்களை
+                                உருவாக்குதல்.</span></li>
+                        <li><span class="lang-content lang-en"><i class="fas fa-users mr-2 text-primary"></i>Community:
+                                Create jobs and startups.</span><span class="lang-content lang-ta hidden"><i
+                                    class="fas fa-users mr-2 text-primary"></i>சமூகம்: வேலைகள் மற்றும் ஸ்டார்ட்அப்களை
+                                உrுவாக்குதல்.</span></li>
+                    </ul>
+                    <a href="#interest"
+                        class="inline-block px-6 py-3 btn-primary rounded-full transition-colors hover-scale text-base font-semibold">
+                        <span class="lang-content lang-en">Join the Movement</span>
+                        <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- How Trees Grow Your Capital Section -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="TreeCapitalTeaser.png" alt="Tree Capital Growth Illustration"
+                        class="w-full rounded-lg hover-scale">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-semibold text-primary mb-4">
+                        <span class="lang-content lang-en">Grow Trees, Grow Impact</span>
+                        <span class="lang-content lang-ta hidden">மரங்களை வளர்க்கவும், தாக்கத்தை வளர்க்கவும்</span>
+                    </h2>
+                    <ul class="list-disc pl-6 text-gray-700 text-lg mb-6">
+                        <li><span class="lang-content lang-en"><i class="fas fa-apple-alt mr-2 text-primary"></i>Harvest
+                                Fruits: Savor mangoes in 2–3 years.</span><span class="lang-content lang-ta hidden"><i
+                                    class="fas fa-apple-alt mr-2 text-primary"></i>பழங்களை அறுவடை: 2-3 ஆண்டுகளில்
+                                மாம்பழங்களை அனுபவிக்கவும்.</span></li>
+                        <li><span class="lang-content lang-en"><i class="fas fa-leaf mr-2 text-primary"></i>Green
+                                Impact: Support eco-parks or earn credits.</span><span
+                                class="lang-content lang-ta hidden"><i class="fas fa-leaf mr-2 text-primary"></i>பசுமை
+                                தாக்கம்: சுற்றுச்சூழல் பூங்காக்களை ஆதரிக்கவும் அல்லது கிரெடிட்களைப் பெறவும்.</span></li>
+                    </ul>
+                    <a href="#interest"
+                        class="inline-block px-6 py-3 btn-primary rounded-full transition-colors hover-scale text-base font-semibold">
+                        <span class="lang-content lang-en">Join the Movement</span>
+                        <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Be a Founding Supporter Section -->
+        <section id="interest" class="py-16">
+            <h2 class="text-4xl font-semibold text-primary text-center mb-4">
+                <span class="lang-content lang-en">Be a Founding Supporter</span>
+                <span class="lang-content lang-ta hidden">முன்னோடி ஆதரவாளராக இருங்கள்</span>
+            </h2>
+            <p class="text-gray-700 text-lg text-center mb-6">
+                <span class="lang-content lang-en">Join the first 1,000 supporters to shape Planto.green’s mission for a
+                    greener India (0/1,000).</span>
+                <span class="lang-content lang-ta hidden">பசுமையான இந்தியாவிற்கு Planto.green-ன் புரட்சியை வடிவமைக்க
+                    முதல் 1,000 ஆதரவாளர்களுடன் இணையுங்கள் (0/1,000).</span>
+            </p>
+            <div class="max-w-lg mx-auto p-8 bg-white rounded-lg shadow">
+                <form>
+                    <input type="text" name="name" placeholder="Your Name / உங்கள் பெயர்" required
+                        class="w-full p-4 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                    <input type="email" name="email"
+                        placeholder="Join our green revolution today! / இன்று பசுமை புரட்சியில் இணையுங்கள்!" required
+                        class="w-full p-4 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-primary text-base">
+                    <div class="mb-4">
+                        <label class="flex items-center text-gray-700 text-sm">
+                            <input type="checkbox" name="feedback" class="mr-2">
+                            <span class="lang-content lang-en">Interested in supporting government-backed
+                                eco-parks?</span>
+                            <span class="lang-content lang-ta hidden">அரசாங்க ஆதரவு சுற்றுச்சூழல் பூங்காக்களை
+                                ஆதரிப்பதில் ஆர்வமா?</span>
+                        </label>
+                    </div>
+                    <button type="submit"
+                        class="w-full p-4 btn-primary rounded-md transition-colors hover-scale text-base font-semibold">
+                        <span class="lang-content lang-en">Join the Movement</span>
+                        <span class="lang-content lang-ta hidden">இயக்கத்தில் இணையுங்கள்</span>
+                    </button>
+                </form>
+                <p class="text-gray-700 text-sm mt-3 text-center">
+                    <span class="lang-content lang-en">Be the first to shape our eco-parks and partnerships.</span>
+                    <span class="lang-content lang-ta hidden">எங்கள் பூங்காக்கள் மற்றும் கூட்டாண்மைகளை முதலில்
+                        வடிவமைக்கவும்.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Hero Image Section -->
+        <section class="hero-image-section">
+            <img src="BannerTeaser.png" alt="Planto.green Vision: Plant Today, Thrive Tomorrow"
+                class="mx-auto rounded-lg hover-scale max-w-4xl">
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-700 text-base">
+            <div>
+                <h3 class="text-lg font-semibold text-primary mb-4">
+                    <span class="lang-content lang-en">About Planto.green</span>
+                    <span class="lang-content lang-ta hidden">Planto.green பற்றி</span>
+                </h3>
+                <p>
+                    <span class="lang-content lang-en">A sustainability initiative by Kriyaetive Verse Private Limited
+                        to plant trees and build eco-parks across India.</span>
+                    <span class="lang-content lang-ta hidden">கிரியேடிவ் வெர்ஸ் பிரைவேட் லிமிடெட் மூலம் இந்தியா
+                        முழுவதும் மரங்களை நடவு செய்து சுற்றுச்சூழல் பூங்காக்களை உருவாக்கும் நிலைத்தன்மை முயற்சி.</span>
+                </p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-primary mb-4">
+                    <span class="lang-content lang-en">Useful Links</span>
+                    <span class="lang-content lang-ta hidden">பயனுள்ள இணைப்புகள்</span>
+                </h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:text-primary" aria-label="Home Page">
+                            <span class="lang-content lang-en">Home</span>
+                            <span class="lang-content lang-ta hidden">முகப்பு</span>
+                        </a></li>
+                    <li><a href="/whitepaper" class="hover:text-primary text-gray-400"
+                            aria-label="Whitepaper (Coming Soon)">
+                            <span class="lang-content lang-en">Whitepaper (Coming Soon)</span>
+                            <span class="lang-content lang-ta hidden">வெள்ளைப்பத்திரம் (விரைவில்)</span>
+                        </a></li>
+                    <li><a href="/about" class="hover:text-primary" aria-label="About Planto.green">
+                            <span class="lang-content lang-en">About</span>
+                            <span class="lang-content lang-ta hidden">பற்றி</span>
+                        </a></li>
+                    <li><a href="/contact" class="hover:text-primary" aria-label="Contact Us">
+                            <span class="lang-content lang-en">Contact</span>
+                            <span class="lang-content lang-ta hidden">தொடர்பு</span>
+                        </a></li>
+                    <li><a href="https://nrega.nic.in" target="_blank" class="hover:text-primary"
+                            aria-label="MGNREGA Scheme">
+                            <span class="lang-content lang-en">MGNREGA</span>
+                            <span class="lang-content lang-ta hidden">MGNREGA</span>
+                        </a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-primary mb-4">
+                    <span class="lang-content lang-en">Connect with Us</span>
+                    <span class="lang-content lang-ta hidden">எங்களுடன் இணையுங்கள்</span>
+                </h3>
+                <p class="mb-2">
+                    <span class="lang-content lang-en">Email: <a href="mailto:info@planto.green"
+                            class="hover:text-primary">info@planto.green</a></span>
+                    <span class="lang-content lang-ta hidden">மின்னஞ்சல்: <a href="mailto:info@planto.green"
+                            class="hover:text-primary">info@planto.green</a></span>
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://x.com/PlantoGreen" target="_blank" class="text-primary hover:text-secondary"
+                        aria-label="Follow on X">
+                        <i class="fab fa-x-twitter fa-lg"></i>
+                    </a>
+                    <a href="https://facebook.com/PlantoGreen" target="_blank" class="text-primary hover:text-secondary"
+                        aria-label="Follow on Facebook">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/planto-green" target="_blank"
+                        class="text-primary hover:text-secondary" aria-label="Follow on LinkedIn">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8">
+            <p class="text-gray-700 text-base mb-2">
+                <span class="lang-content lang-en">Together, we plant the seeds for a sustainable tomorrow.</span>
+                <span class="lang-content lang-ta hidden">ஒன்றாக, நிலையான நாளைக்கு விதைகளை நடுகிறோம்.</span>
+            </p>
+            <p class="text-gray-700 text-base">
+                <span class="lang-content lang-en">© 2025 Planto.green, a Kriyaetive Verse Private Limited project.
+                    Plans in ideation, subject to government approvals.</span>
+                <span class="lang-content lang-ta hidden">© 2025 Planto.green, கிரியேடிவ் வெர்ஸ் பிரைவேட் லிமிடெட்
+                    திட்டம். திட்டங்கள் ஆரம்ப கட்டத்தில், அரசாங்க ஒப்புதல்களுக்கு உட்பட்டவை.</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Navigation Toggle Script -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        const langToggle = document.getElementById('lang-toggle');
+        const langEnContents = document.querySelectorAll('.lang-en');
+        const langTaContents = document.querySelectorAll('.lang-ta');
+        let isTamil = false;
+
+        langEnContents.forEach(content => content.classList.remove('hidden'));
+        langTaContents.forEach(content => content.classList.add('hidden'));
+
+        langToggle.addEventListener('click', () => {
+            isTamil = !isTamil;
+            langToggle.textContent = isTamil ? 'English' : 'தமிழ்';
+
+            if (isTamil) {
+                langEnContents.forEach(content => content.classList.add('hidden'));
+                langTaContents.forEach(content => content.classList.remove('hidden'));
+            } else {
+                langEnContents.forEach(content => content.classList.remove('hidden'));
+                langTaContents.forEach(content => content.classList.add('hidden'));
+            }
+        });
+    </script>
+</body>
+
+</html>
